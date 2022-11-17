@@ -779,7 +779,7 @@ config_sing-box(){
 
   echo ""
   read -p " 请输入Shadowsocks端口[30000-65535的一个数字，默认34210]：" port_ss
-  [[ -z "${port_ss}" ]] && port=34210
+  [[ -z "${port_ss}" ]] && port_ss=34210
   if [[ "${port_ss:0:1}" = "0" ]]; then
     LOGE "端口不能以0开头"
     exit 1
