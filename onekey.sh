@@ -728,11 +728,7 @@ config_sing-box(){
     echo -e " ${red}1.一个伪装域名${plain}"
     echo -e " ${red}2.伪装域名DNS解析指向当前服务器ip（${ip}）${plain}"
     echo ""
-    read -p " 确认满足按y，按其他退出脚本：" answer
-
-    if [[ "${answer,,}" != "y" ]]; then
-      exit 0
-    fi
+   
 
     echo ""
     while true
@@ -748,7 +744,9 @@ config_sing-box(){
 
     echo ""
     domain=${domain,,}
-    resolve=`curl -sL https://lefu.men/hostip.php?d=${domain}`
+    #resolve=`curl -sL https://lefu.men/hostip.php?d=${domain}`
+    resolve=`curl -sL http://dns.alidns.com/resolve?name=${domain}`
+    
     res=`echo -n ${resolve} | grep ${ip}`
     if [[ -z "${res}" ]]; then
       echo " ${domain} 解析结果：${resolve}"
