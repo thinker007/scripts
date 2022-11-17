@@ -227,7 +227,7 @@ install_base() {
   if [[ ${OS_RELEASE} == "ubuntu" || ${OS_RELEASE} == "debian" ]]; then
     apt clean all
     apt update -y
-    apt install wget tar unzip vim gcc openssl -y
+    apt install nginx wget tar unzip vim gcc openssl -y
     apt install net-tools -y 
     apt install libssl-dev g++ -y
   elif [[ ${OS_RELEASE} == "centos" ]]; then
@@ -490,6 +490,7 @@ enable_sing-box() {
 create_Cert() {
   LOGD "开始获取证书..."
   sleep 2s
+  systemctl stop nginx
   res=`ss -ntlp| grep -E ':80 |:443 '`
   if [[ "${res}" != "" ]]; then
     LOGE "其他进程占用了80或443端口，请先关闭再运行一键脚本${plain}"
