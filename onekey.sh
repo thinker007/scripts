@@ -880,7 +880,7 @@ config_sing-box(){
       ],
       "transport": {
         "type": "ws",
-        "path": "/vmess"
+        "path": "/nudhvws"
       }
     },
     {
@@ -1022,7 +1022,7 @@ showInfo() {
 
     uuid=`grep password ${CONFIG_FILE_PATH}/config.json | cut -d\" -f4`
     
-    base64Str=$(echo -n "{\"port\":${port},\"ps\":\"${domain}_vmess\",\"tls\":\"tls\",\"id\":\"${uuid}\",\"aid\":0,\"v\":2,\"host\":\"${domain}\",\"type\":\"none\",\"path\":\"/vmess\",\"net\":\"ws\",\"add\":\"${domain}\",\"allowInsecure\":0,\"peer\":\"${domain}\",\"sni\":\"\"}" | base64 -w 0)
+    base64Str=$(echo -n "{\"port\":${port},\"ps\":\"${domain}_vmess\",\"tls\":\"tls\",\"id\":\"${uuid}\",\"aid\":0,\"v\":2,\"host\":\"${domain}\",\"type\":\"none\",\"path\":\"/nudhvws\",\"net\":\"ws\",\"add\":\"${domain}\",\"allowInsecure\":0,\"peer\":\"${domain}\",\"sni\":\"\"}" | base64 -w 0)
     base64Str="${base64Str// /}"
 
     ss_ip=`curl -sL -4 ip.sb`
