@@ -624,6 +624,10 @@ server {
   listen 80;
   listen [::]:80;
   server_name ${domain};
+  location /ip {
+                        default_type text/plain;
+                        return 200 "$remote_addr\n";
+                }
   rewrite ^(.*)$ https://${domain}:${port}$1 permanent;
 }
 
@@ -663,6 +667,15 @@ server {
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
   }
+  location /dns-query {
+           proxy_http_version 1.1;
+           proxy_set_header Connection "";
+           proxy_pass https://dns.google/dns-query;
+         }
+  location /ip {
+                        default_type text/plain;
+                        return 200 "$remote_addr\n";
+                }
 }
 EOF
   else
@@ -672,7 +685,10 @@ server {
   listen [::]:${port};
   server_name ${domain};
   root /usr/share/nginx/html;
-
+  location /ip {
+                        default_type text/plain;
+                        return 200 "$remote_addr\n";
+                }
   location /nudhvws {
     proxy_redirect off;
     proxy_pass http://127.0.0.1:33210;
