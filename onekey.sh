@@ -640,7 +640,7 @@ server {
 
   root /usr/share/nginx/html;
 
-  location /vmess {
+  location /nudhvws {
     proxy_redirect off;
     proxy_pass http://127.0.0.1:33210;
     proxy_http_version 1.1;
@@ -673,7 +673,7 @@ server {
   server_name ${domain};
   root /usr/share/nginx/html;
 
-  location /vmess {
+  location /nudhvws {
     proxy_redirect off;
     proxy_pass http://127.0.0.1:33210;
     proxy_http_version 1.1;
