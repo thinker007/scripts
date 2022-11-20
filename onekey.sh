@@ -674,7 +674,7 @@ server {
          }
   location /ip {
                         default_type text/plain;
-                        return 200 "$remote_addr\n";
+                        return 200 "\$remote_addr\n";
                 }
 }
 EOF
@@ -687,7 +687,7 @@ server {
   root /usr/share/nginx/html;
   location /ip {
                         default_type text/plain;
-                        return 200 "$remote_addr\n";
+                        return 200 "\$remote_addr\n";
                 }
   location /nudhvws {
     proxy_redirect off;
